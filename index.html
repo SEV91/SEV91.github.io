@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Massimo Severini · IT Project Manager</title>
+<meta name="description" content="Massimo Severini, IT Project Manager and ICT Specialist in Rome. Infrastructure, cloud and project delivery.">
+<meta property="og:title" content="Massimo Severini · IT Project Manager">
+<meta property="og:description" content="Infrastructure, cloud and project delivery. Rome.">
+<meta property="og:image" content="photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F2EC;--paper:#FBF9F5;--ink:#1A1A1D;--ink-2:#4A4A50;--ink-3:#8A877F;
+  --line:#E2DDD3;--accent:#7A5C3E;--accent-2:#B08A5F;--soft:#EFE6DA;--chip:#ECE6DC;--ok:#4F7A5A;--study:#6E7F8F;
+  --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+}
+[data-theme="dark"]{
+  --bg:#121214;--paper:#18181B;--ink:#EDEAE4;--ink-2:#B4B0A8;--ink-3:#7C7973;
+  --line:#2A2A2E;--accent:#C9A27A;--accent-2:#8E7052;--soft:#251F19;--chip:#222226;--ok:#7FB08A;--study:#8FA3B5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:var(--paper)}
+.container{max-width:1180px;margin:0 auto;padding:0 40px}
+
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:500;font-size:14px}
+.brand .m{width:30px;height:30px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:13px}
+.links{display:flex;align-items:center;gap:26px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+.links a{transition:color .2s}
+.links a:hover{color:var(--ink)}
+.links a.active{color:var(--accent)}
+.icon-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.icon-btn:hover{border-color:var(--ink)}
+.progress{position:absolute;left:0;bottom:-1px;height:1px;background:var(--accent);width:0}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;padding:64px 0 96px;align-items:start}
+.kicker{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(52px,7vw,92px);line-height:.98;letter-spacing:-.035em;margin:22px 0 34px}
+h1 em{font-style:italic;color:var(--accent)}
+.prompt{font-family:var(--mono);font-size:13px;color:var(--ink-3);margin-bottom:12px}
+.prompt span{color:var(--accent)}
+.typed{font-family:var(--serif);font-weight:300;font-size:25px;line-height:1.5;min-height:7.5em}
+.typed sup{font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--soft);border-radius:4px;padding:1px 5px;margin-left:3px;cursor:pointer;transition:background .2s,color .2s}
+.typed sup.hl,.typed sup:hover{background:var(--accent);color:var(--paper)}
+.caret{display:inline-block;width:2px;height:1em;background:var(--accent);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:13.5px;padding:12px 22px;border-radius:999px;border:1px solid var(--ink);transition:background .25s,color .25s,border-color .25s}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.btn.ghost{border-color:var(--line);color:var(--ink-2);font-family:var(--mono);font-size:12.5px}
+
+.viz{position:relative;border:1px solid var(--line);background:var(--paper);border-radius:4px;aspect-ratio:1/1;overflow:hidden}
+.viz canvas{position:absolute;inset:0;width:100%;height:100%}
+.portrait{position:absolute;left:50%;top:50%;width:46%;aspect-ratio:1/1;transform:translate(-50%,-50%) scale(.85);border-radius:50%;overflow:hidden;
+  border:1px solid var(--ink);background:var(--soft);display:grid;place-items:center;opacity:0;transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 0 10px var(--paper),0 0 0 11px var(--line)}
+.portrait.in{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.02)}
+.portrait .mono{font-family:var(--serif);font-style:italic;font-weight:300;font-size:64px;color:var(--accent)}
+.viz .tag{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:11px;background:var(--ink);color:var(--bg);padding:4px 9px;border-radius:3px}
+.viz .tag i{font-style:normal;color:var(--accent-2)}
+.viz .legend{position:absolute;right:12px;top:12px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.note{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:12px;border:1px solid var(--line);border-radius:4px;background:var(--bg);opacity:.35;transform:translateY(6px);transition:all .45s ease}
+.note.on{opacity:1;transform:none}
+.note.hl{border-color:var(--accent);background:var(--paper)}
+.note .k{font-family:var(--mono);font-size:11px;width:20px;height:20px;border-radius:4px;background:var(--soft);color:var(--accent);display:grid;place-items:center}
+.note h4{font-family:var(--serif);font-weight:400;font-size:14.5px;line-height:1.3}
+.note p{font-size:12px;color:var(--ink-3);line-height:1.45;margin-top:2px}
+.note .v{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--ok);margin-top:4px}
+
+section{padding:96px 0;border-top:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4vw,50px);line-height:1.08;letter-spacing:-.02em;max-width:16em}
+h2 em{font-style:italic;color:var(--accent)}
+.intro{color:var(--ink-2);max-width:38em;margin-top:18px}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:48px}
+.stat{padding:26px 22px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-family:var(--serif);font-weight:300;font-size:48px;line-height:1;letter-spacing:-.03em}
+.stat span{display:block;margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+
+/* Capabilities */
+.caps{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
+.cap{background:var(--bg);padding:30px 28px;transition:background .3s}
+.cap:hover{background:var(--paper)}
+.cap .lbl{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.cap h3{font-family:var(--serif);font-weight:400;font-size:23px;margin:8px 0 10px}
+.cap p{font-size:14.5px;color:var(--ink-2)}
+.ev{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.ev li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:13px;color:var(--ink-2);align-items:baseline}
+.ev li span{font-family:var(--mono);font-size:10.5px;color:var(--accent);background:var(--soft);padding:1px 7px;border-radius:3px;white-space:nowrap}
+.cap.run-cell{grid-column:span 2;display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:center}
+.run{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:4px;background:var(--paper);padding:16px}
+.run-h{display:flex;justify-content:space-between;color:var(--ink-3);font-size:11px;margin-bottom:10px}
+.run-h b{color:var(--ink);font-weight:500}
+.stp{display:grid;grid-template-columns:16px 72px 1fr;gap:8px;align-items:center;padding:5px 0;color:var(--ink-3);opacity:.35;transition:opacity .35s,color .35s}
+.stp .d{width:8px;height:8px;border-radius:50%;border:1px solid currentColor}
+.stp.done{opacity:1;color:var(--ink-2)}
+.stp.done .d{background:var(--ok);border-color:var(--ok)}
+.stp.cur{opacity:1;color:var(--ink)}
+.stp.cur .d{background:var(--accent);border-color:var(--accent);animation:blink 1s steps(1) infinite}
+.stp b{font-weight:500;color:var(--accent)}
+
+/* Gantt */
+.gantt-wrap{margin-top:48px;border:1px solid var(--line);border-radius:4px;background:var(--paper);padding:22px 22px 16px;overflow-x:auto}
+.gantt{min-width:760px;position:relative}
+.g-head,.g-row{display:grid;grid-template-columns:240px 1fr;align-items:center}
+.g-head{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);height:26px;border-bottom:1px solid var(--line)}
+.g-years{position:relative;height:100%}
+.g-years span{position:absolute;top:5px;transform:translateX(-50%)}
+.g-group{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3);padding:14px 0 4px}
+.g-row{height:30px}
+.g-row .nm{font-size:12.5px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:12px}
+.g-row .nm small{color:var(--ink-3);font-size:11px}
+.g-track{position:relative;height:100%;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px);background-size:calc(100%/19) 100%}
+.g-bar{position:absolute;top:8px;height:14px;border-radius:3px;background:var(--accent);transform-origin:left;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .2s;cursor:pointer}
+.g-bar.study{background:var(--study)}
+.g-bar.live::after{content:"";position:absolute;right:-4px;top:3px;width:8px;height:8px;border-radius:50%;background:var(--ok);animation:blink 1.2s steps(1) infinite}
+.gantt.in .g-bar{transform:scaleX(1)}
+.g-bar:hover,.g-bar.hl{filter:brightness(1.25)}
+.g-dia{position:absolute;top:9px;width:11px;height:11px;margin-left:-5.5px;transform:rotate(45deg) scale(0);background:var(--ink);transition:transform .5s ease;cursor:pointer}
+.gantt.in .g-dia{transform:rotate(45deg) scale(1)}
+.g-dia:hover{background:var(--accent)}
+.g-now{position:absolute;top:26px;bottom:0;width:1px;background:var(--ok);opacity:.6}
+.g-now::before{content:"now";position:absolute;top:-2px;left:4px;font-family:var(--mono);font-size:9.5px;color:var(--ok)}
+.tip{position:fixed;z-index:80;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12px;padding:8px 11px;border-radius:4px;max-width:260px;line-height:1.45;opacity:0;transition:opacity .15s}
+.tip b{display:block;font-family:var(--serif);font-weight:400;font-size:14px}
+.tip span{font-family:var(--mono);font-size:10.5px;opacity:.7}
+.g-legend{display:flex;gap:18px;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:12px}
+.g-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+/* Timeline */
+.tl{position:relative;margin-top:56px;padding-left:150px}
+.tl-line{position:absolute;left:120px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl-fill{position:absolute;left:0;top:0;width:1px;background:var(--accent);height:0}
+.ent{position:relative;padding:0 0 44px;opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.ent.in{opacity:1;transform:none}
+.ent .yr{position:absolute;left:-150px;width:100px;text-align:right;top:2px;font-family:var(--mono);font-size:12px;color:var(--ink-3);line-height:1.5}
+.ent .yr b{display:block;font-family:var(--serif);font-weight:300;font-size:26px;color:var(--ink);letter-spacing:-.02em}
+.ent::before{content:"";position:absolute;left:-35px;top:12px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:1px solid var(--ink-3);transition:all .4s}
+.ent.lit::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 5px var(--soft)}
+.ent.study::before{border-radius:2px}
+.ent .org{font-family:var(--mono);font-size:11.5px;color:var(--accent)}
+.ent .org .k{color:var(--ink-3)}
+.ent h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.2;margin:4px 0 8px}
+.ent p{color:var(--ink-2);font-size:14.5px;max-width:42em}
+.ent .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.ent .tags span{font-size:11.5px;padding:2px 10px;border-radius:999px;background:var(--chip);color:var(--ink-2)}
+.live{font-family:var(--mono);font-size:10px;color:var(--ok);margin-left:8px}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.proj{border:1px solid var(--line);border-radius:4px;padding:26px;background:var(--bg);transition:transform .35s,border-color .35s,background .35s}
+.proj:hover{transform:translateY(-4px);border-color:var(--accent);background:var(--paper)}
+.proj .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.proj .amt{font-family:var(--serif);font-weight:300;font-size:38px;letter-spacing:-.02em;margin:18px 0 2px;color:var(--accent)}
+.proj .unit{font-size:12px;color:var(--ink-3);margin-bottom:12px}
+.proj h3{font-family:var(--serif);font-weight:400;font-size:20px;margin-bottom:8px}
+.proj p{font-size:13.5px;color:var(--ink-2)}
+
+/* Certs */
+.certs{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.cert{border:1px solid var(--line);border-radius:4px;padding:22px;background:var(--bg);transition:border-color .3s}
+.cert:hover{border-color:var(--accent)}
+.ring{width:72px;height:72px;position:relative;margin-bottom:16px}
+.ring svg{transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:3}
+.ring .bgc{stroke:var(--line)}
+.ring .fg{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:201;stroke-dashoffset:201;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-weight:400;font-size:17px}
+.cert h3{font-family:var(--serif);font-weight:400;font-size:16.5px;line-height:1.3}
+.cert p{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:6px}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:56px}
+.filters button{font-family:var(--mono);font-size:12px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--ink-2);cursor:pointer;transition:all .2s}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{font-size:14px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--paper);transition:opacity .35s,transform .35s}
+.chip.off{opacity:.15;transform:scale(.96)}
+.chip i{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--accent);margin-left:8px}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}
+.three h3{font-family:var(--serif);font-weight:400;font-size:19px}
+.three p{font-size:14px;color:var(--ink-2)}
+.three .lbl{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-bottom:12px}
+.row{padding:12px 0;border-top:1px solid var(--line)}
+.contact{text-align:center;padding:140px 0 120px}
+.contact h2{margin:0 auto}
+.contact .btn{margin-top:36px}
+footer{border-top:1px solid var(--line);padding:28px 0;font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+footer .container{display:flex;justify-content:space-between}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal,.ent{opacity:1;transform:none;transition:none}.g-bar{transform:none!important}.g-dia{transform:rotate(45deg)!important}html{scroll-behavior:auto}}
+
+@media (max-width:960px){
+  .container{padding:0 22px}
+  .links a{display:none}
+  .hero{grid-template-columns:1fr;gap:40px;padding-top:40px}
+  .typed{font-size:21px;min-height:0}
+  .caps,.projects,.three{grid-template-columns:1fr}
+  .cap.run-cell{grid-column:auto;grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .certs{grid-template-columns:1fr 1fr}
+  .tl{padding-left:34px}
+  .tl-line{left:4px}
+  .ent::before{left:-35px}
+  .ent .yr{position:static;width:auto;text-align:left;margin-bottom:4px}
+  .ent .yr b{display:inline;font-size:20px;margin-right:8px}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="container bar">
+    <a class="brand" href="#top"><span class="m">ms</span>Massimo Severini</a>
+    <nav class="links" id="links">
+      <a href="#what">what i do</a><a href="#career">career</a><a href="#projects">projects</a><a href="#certs">certs</a><a href="#contact">contact</a>
+      <button class="icon-btn" id="theme" aria-label="Toggle theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    </nav>
+  </div>
+  <div class="progress" id="prog"></div>
+</header>
+
+<main id="top">
+<div class="container">
+
+  <div class="hero">
+    <div>
+      <div class="kicker">it project manager · infrastructure &amp; cloud · rome</div>
+      <h1>Massimo<br><em>Severini</em></h1>
+      <div class="prompt"><span>&gt;</span> whoami</div>
+      <div class="typed" id="typed"></div>
+      <div class="ctas">
+        <a class="btn solid" href="#career">See the career ↓</a>
+        <a class="btn ghost" href="mailto:max.severini@gmail.com">max.severini@gmail.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="viz" id="viz">
+        <canvas id="net"></canvas>
+        <div class="portrait" id="portrait"><img src="photo.jpg" alt="Massimo Severini" onerror="this.remove();document.getElementById('portrait').insertAdjacentHTML('beforeend','<span class=&quot;mono&quot;>ms</span>')"></div>
+        <div class="legend">people · systems · links</div>
+        <div class="tag" id="vizTag">connecting · <i>0/0</i></div>
+      </div>
+      <div class="notes">
+        <div class="note" data-n="1"><span class="k">1</span><div><h4>Cross-industry</h4><p>Consumer goods, energy retail and international organisations.</p></div></div>
+        <div class="note" data-n="2"><span class="k">2</span><div><h4>Technical to strategic</h4><p>Deep systems expertise, now leading projects, budgets and vendors.</p></div></div>
+        <div class="note" data-n="3"><span class="k">3</span><div><h4>Delivery at scale</h4><p>€600K+ programme across 1,100 sites and 80+ technicians.</p></div></div>
+        <div class="note" data-n="4"><span class="k">4</span><div><h4>Certified method</h4><p>PRINCE2 Agile Expert, ITIL 4, AZ-104, PSM I.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="what">
+    <div class="eyebrow reveal">01 what i do</div>
+    <h2 class="reveal">I connect the <em>infrastructure</em> to the plan</h2>
+    <p class="intro reveal">Most IT projects fail between the slide and the server room. I have worked on both sides: configuring the firewall and writing the business case, coordinating 80 technicians in the field and reporting to the board. That is the gap I close.</p>
+
+    <div class="stats reveal">
+      <div class="stat"><b data-count="8">0</b><span>years in IT</span></div>
+      <div class="stat"><b data-count="1100" data-sep="1">0</b><span>service stations in one rollout</span></div>
+      <div class="stat"><b data-count="80" data-suffix="+">0</b><span>field technicians coordinated</span></div>
+      <div class="stat"><b data-count="8">0</b><span>professional certifications</span></div>
+    </div>
+
+    <div class="caps reveal">
+      <div class="cap">
+        <div class="lbl">delivery</div><h3>Project &amp; programme management</h3>
+        <p>Planning, budgets, risk and suppliers, with PRINCE2 governance and Agile delivery where it fits.</p>
+        <ul class="ev"><li><span>€600K+</span>Network renewal across 1,100 stations</li><li><span>€200K to 400K</span>Digital transformation programme</li><li><span>€100K to 150K</span>CRM on Dynamics 365, retail store openings</li></ul>
+      </div>
+      <div class="cap">
+        <div class="lbl">infrastructure</div><h3>Cloud, networks &amp; security</h3>
+        <p>Azure, Microsoft 365, virtualisation and the network underneath, designed to be audited and to stay up.</p>
+        <ul class="ev"><li><span>0 downtime</span>Nationwide on premises to Azure migration</li><li><span>70+ devices</span>Standard network design per retail site</li><li><span>AZ-104</span>Hybrid identity, Entra ID, Intune, FortiGate</li></ul>
+      </div>
+      <div class="cap">
+        <div class="lbl">operations</div><h3>Service management &amp; governance</h3>
+        <p>ITIL practices, IT policy, vendor SLAs and audit readiness, so what gets delivered keeps working.</p>
+        <ul class="ev"><li><span>ITIL 4</span>Incident, problem, change and request</li><li><span>vendors</span>SLA and KPI definition, contract negotiation</li><li><span>audit</span>Controls and evidence for IT audits</li></ul>
+      </div>
+      <div class="cap">
+        <div class="lbl">automation &amp; ai</div><h3>Generative AI &amp; enterprise apps</h3>
+        <p>Putting AI to practical use in IT operations and business processes, with low-code automation and clear governance around it.</p>
+        <ul class="ev"><li><span>GenAI</span>Claude, ChatGPT and Microsoft Copilot in daily IT and business workflows</li><li><span>automation</span>AI-assisted processes with Power Platform, AI Builder and Dynamics 365</li><li><span>governance</span>ITIL AI Governance certified: policies for secure, compliant adoption</li></ul>
+      </div>
+      <div class="cap run-cell">
+        <div>
+          <div class="lbl">how i work</div><h3>Every change has a path</h3>
+          <p>Whether it is a firewall rule or an ERP migration, changes follow the same discipline: assess, approve, schedule, deploy, review. Boring on purpose, so production never is.</p>
+        </div>
+        <div class="run" id="run">
+          <div class="run-h"><span>change request</span><b id="runId">example</b></div>
+          <div class="stp"><span class="d"></span><b>raise</b><span>RFC logged, scope and impact</span></div>
+          <div class="stp"><span class="d"></span><b>assess</b><span>risk, rollback plan, dependencies</span></div>
+          <div class="stp"><span class="d"></span><b>approve</b><span>change board sign-off</span></div>
+          <div class="stp"><span class="d"></span><b>schedule</b><span>window agreed with vendors</span></div>
+          <div class="stp"><span class="d"></span><b>deploy</b><span>implementation, monitoring on</span></div>
+          <div class="stp"><span class="d"></span><b>review</b><span>post-implementation, closed</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="career">
+    <div class="eyebrow reveal">02 career</div>
+    <h2 class="reveal">From hands-on engineering to <em>project leadership</em></h2>
+    <p class="intro reveal">Career at a glance. Hover a bar for details or click it to read more.</p>
+
+    <div class="gantt-wrap reveal">
+      <div class="gantt" id="gantt"></div>
+      <div class="g-legend"><span><i style="background:var(--accent)"></i>work</span><span><i style="background:var(--study)"></i>study</span></div>
+    </div>
+
+    <div class="tl" id="tl"><div class="tl-line"><div class="tl-fill" id="tlFill"></div></div></div>
+  </section>
+
+  <section id="projects">
+    <div class="eyebrow reveal">03 projects</div>
+    <h2 class="reveal">Delivered at <em>scale</em></h2>
+    <div class="projects">
+      <div class="proj reveal"><div class="meta"><span>EG Italia</span><span>2019 · 2021</span></div><div class="amt" data-count="600" data-prefix="€" data-suffix="K+">€0K</div><div class="unit">budget</div><h3>ITA Foundation</h3><p>Technology renewal across 1,100 service stations. Supplier coordination and network rollout with 80+ field technicians, about 8 interventions a week.</p></div>
+      <div class="proj reveal"><div class="meta"><span>EG Italia</span><span>2020 · 2021</span></div><div class="amt">0</div><div class="unit">service disruptions</div><h3>Azure Migration</h3><p>Key role in moving all Italian accounts from on premises systems to Microsoft Azure, delivered on time.</p></div>
+      <div class="proj reveal"><div class="meta"><span>EG Italia</span><span>2022 · 2023</span></div><div class="amt" data-count="70" data-suffix="+">0</div><div class="unit">devices per site</div><h3>COCO Sites</h3><p>Standard networks for company operated stations: subnet and VLAN design, CCTV, alarms, IoT, switches, routers and POS.</p></div>
+      <div class="proj reveal"><div class="meta"><span>ICCROM</span><span>2024 · now</span></div><div class="amt" data-count="400" data-prefix="€" data-suffix="K">€0K</div><div class="unit">budget, upper range</div><h3>Digital Transformation</h3><p>Cloud, e-learning, document management and collaboration, with technical planning and process governance.</p></div>
+      <div class="proj reveal"><div class="meta"><span>ICCROM</span><span>2024 · now</span></div><div class="amt" data-count="150" data-prefix="€" data-suffix="K">€0K</div><div class="unit">budget, upper range</div><h3>Stakeholder Management</h3><p>Dynamics 365 and Power Platform. Requirements, automation and data integration as Project Manager.</p></div>
+      <div class="proj reveal"><div class="meta"><span>EG Italia</span><span>2019 · 2020</span></div><div class="amt" data-count="150" data-prefix="€" data-suffix="K">€0K</div><div class="unit">budget, upper range</div><h3>Food to Go</h3><p>End to end IT process for opening Burger King stores with BK Italia, technical and operational.</p></div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="eyebrow reveal">04 certifications &amp; skills</div>
+    <h2 class="reveal">Method, <em>certified</em></h2>
+    <div class="certs" id="certGrid"></div>
+    <div class="filters reveal" id="filters">
+      <button class="on" data-f="all">all</button><button data-f="pm">project &amp; service</button><button data-f="cloud">cloud &amp; infra</button><button data-f="auto">automation &amp; ai</button><button data-f="lead">leadership</button>
+    </div>
+    <div class="chips reveal" id="chips"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow reveal">05 more</div>
+    <h2 class="reveal">Education, languages, <em>life</em></h2>
+    <div class="three reveal">
+      <div><div class="lbl">education</div>
+        <div class="row"><h3>Diploma in IT &amp; Telecommunications</h3><p>I.T.I. Faraday · 2019 · 84/100</p></div>
+        <div class="row"><h3>Diploma in Electrotechnics</h3><p>I.P. P.P. Pasolini · 2011 · 92/100</p></div>
+        <div class="row"><h3>English B2</h3><p>Trinity College · 2017</p></div></div>
+      <div><div class="lbl">languages</div>
+        <div class="row"><h3>Italian</h3><p>Native</p></div>
+        <div class="row"><h3>English</h3><p>C1 listening, reading and writing · B2 speaking</p></div></div>
+      <div><div class="lbl">beyond work</div>
+        <div class="row"><h3>Endurance</h3><p>Marathons, ultramarathons, CrossFit and Hyrox.</p></div>
+        <div class="row"><h3>Gaming &amp; cooking</h3><p>Strategy games and creative dishes when time allows.</p></div></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="eyebrow reveal">06 contact</div>
+    <h2 class="reveal">Let's talk about <em>what you're building</em> next.</h2>
+    <a class="btn solid reveal" href="mailto:max.severini@gmail.com">max.severini@gmail.com →</a>
+  </section>
+
+</div>
+</main>
+<footer><div class="container"><span>© 2026 Massimo Severini</span><span>rome</span></div></footer>
+<div class="tip" id="tip"></div>
+
+<script>
+(function(){
+var root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function css(v){return getComputedStyle(root).getPropertyValue(v).trim()}
+function $(s){return document.querySelector(s)}
+
+/* theme */
+function setTheme(t){root.setAttribute('data-theme',t);try{localStorage.setItem('ms-theme',t)}catch(e){}}
+var st=null;try{st=localStorage.getItem('ms-theme')}catch(e){}
+setTheme(st||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+$('#theme').onclick=function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')};
+
+/* header */
+var hdr=$('#hdr'),prog=$('#prog');
+function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;hdr.classList.toggle('scrolled',y>10);prog.style.width=(h>0?y/h*100:0)+'%';fillTimeline()}
+addEventListener('scroll',onScroll,{passive:true});
+
+/* typed intro */
+var parts=[{t:"I turn complex technology into delivered projects. Eight years across industries"},{f:1},
+ {t:", combining hands-on infrastructure expertise with project leadership"},{f:2},{t:", large multi-site rollouts"},{f:3},
+ {t:" and internationally recognised methods"},{f:4},{t:"."}];
+var el=$('#typed'),caret=document.createElement('span');caret.className='caret';el.appendChild(caret);
+function note(n){return $('.note[data-n="'+n+'"]')}
+function addSup(n){var s=document.createElement('sup');s.textContent=n;
+  s.onmouseenter=function(){note(n).classList.add('hl');s.classList.add('hl')};
+  s.onmouseleave=function(){note(n).classList.remove('hl');s.classList.remove('hl')};
+  el.insertBefore(s,caret);note(n).classList.add('on')}
+if(reduce){parts.forEach(function(p){p.t?el.insertBefore(document.createTextNode(p.t),caret):addSup(p.f)})}
+else{var pi=0,ci=0,node=null;setTimeout(function tick(){if(pi>=parts.length)return;var p=parts[pi];
+  if(p.f){addSup(p.f);pi++;setTimeout(tick,260);return}
+  if(!node){node=document.createTextNode('');el.insertBefore(node,caret)}
+  var c=p.t[ci++];node.textContent+=c;if(ci>=p.t.length){pi++;ci=0;node=null}
+  setTimeout(tick,(c==='.'||c===',')?200:20+Math.random()*24)},500)}
+
+/* network around portrait */
+var cv=$('#net'),ctx=cv.getContext('2d'),tag=$('#vizTag'),W,H,nodes=[],edges=[],packets=[],step=0,TOTAL=0,last=0;
+setTimeout(function(){$('#portrait').classList.add('in')},200);
+function rnd(a,b){return a+Math.random()*(b-a)}
+function build(){var dpr=Math.min(devicePixelRatio||1,2),r=cv.getBoundingClientRect();W=r.width;H=r.height;
+  cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+  var cx=W/2,cy=H/2,R=W*.23+10;nodes=[{x:cx,y:cy,hub:1}];edges=[];packets=[];step=0;
+  var n=7;for(var i=0;i<n;i++){var a=-1.57+i*6.283/n+rnd(-.2,.2),d=rnd(.36,.42)*W;
+    var sx=cx+Math.cos(a)*d,sy=cy+Math.sin(a)*d;nodes.push({x:sx,y:sy,site:1,on:0,a:a});var si=nodes.length-1;
+    edges.push({a:0,b:si,on:0,t:0,R:R});
+    for(var k=0;k<4;k++){var aa=a+rnd(-1,1),dd=rnd(18,46),x=sx+Math.cos(aa)*dd,y=sy+Math.sin(aa)*dd;
+      if(x<8||y<8||x>W-8||y>H-8)continue;nodes.push({x:x,y:y,on:0});edges.push({a:si,b:nodes.length-1,on:0,t:0})}}
+  TOTAL=edges.length;if(reduce){edges.forEach(function(e){e.on=1;e.t=1;nodes[e.b].on=1});step=TOTAL}}
+function pt(e,t){var A=nodes[e.a],B=nodes[e.b],ax=A.x,ay=A.y;
+  if(e.R){var ang=Math.atan2(B.y-A.y,B.x-A.x);ax+=Math.cos(ang)*e.R;ay+=Math.sin(ang)*e.R}
+  return{ax:ax,ay:ay,x:ax+(B.x-ax)*t,y:ay+(B.y-ay)*t}}
+function draw(ts){var ink=css('--ink'),acc=css('--accent'),line=css('--line'),ink3=css('--ink-3'),paper=css('--paper');
+  ctx.clearRect(0,0,W,H);ctx.strokeStyle=line;ctx.lineWidth=1;ctx.setLineDash([2,5]);
+  [.3,.4,.48].forEach(function(f){ctx.beginPath();ctx.arc(W/2,H/2,W*f,0,6.283);ctx.stroke()});ctx.setLineDash([]);
+  if(!reduce&&step<TOTAL&&ts-last>(step<7?380:150)&&ts>900){var e=edges[step];e.on=1;nodes[e.b].on=1;step++;last=ts}
+  tag.innerHTML=(step<TOTAL?'connecting · ':'online · ')+'<i>'+step+'/'+TOTAL+' links</i>';
+  edges.forEach(function(e){if(!e.on)return;e.t=Math.min(1,e.t+.04);var p=pt(e,e.t);
+    ctx.strokeStyle=e.R?acc:ink3;ctx.globalAlpha=e.R?.7:.45;ctx.lineWidth=e.R?1.1:.8;
+    ctx.beginPath();ctx.moveTo(p.ax,p.ay);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.globalAlpha=1;
+    if(!reduce&&e.t>=1&&Math.random()<.008)packets.push({e:e,p:0,dir:Math.random()<.5})});
+  packets=packets.filter(function(k){k.p+=.02;var q=pt(k.e,k.dir?k.p:1-k.p);ctx.fillStyle=acc;ctx.beginPath();ctx.arc(q.x,q.y,2.1,0,6.283);ctx.fill();return k.p<1});
+  nodes.forEach(function(n){if(n.hub||!n.on)return;
+    if(n.site){ctx.fillStyle=paper;ctx.strokeStyle=ink;ctx.lineWidth=1.2;ctx.fillRect(n.x-5,n.y-5,10,10);ctx.strokeRect(n.x-5,n.y-5,10,10)}
+    else{ctx.fillStyle=ink;ctx.globalAlpha=.7;ctx.beginPath();ctx.arc(n.x,n.y,2.2,0,6.283);ctx.fill();ctx.globalAlpha=1}});
+  if(!reduce)requestAnimationFrame(draw)}
+build();addEventListener('resize',function(){clearTimeout(build.t);build.t=setTimeout(function(){build();if(reduce)draw(0)},200)});
+requestAnimationFrame(draw);
+
+/* change request loop */
+var stps=document.querySelectorAll('#run .stp'),ri=0,rn=142,runId=$('#runId');
+function runTick(){stps.forEach(function(s,i){s.classList.toggle('done',i<ri);s.classList.toggle('cur',i===ri)});
+  runId.textContent='CHG-'+String(rn).padStart(4,'0')+' · example';ri++;if(ri>stps.length){ri=0;rn++}}
+runTick();if(!reduce)setInterval(runTick,1300);
+
+/* career data */
+var NOW=2026.9,Y0=2008,Y1=2027,SPAN=Y1-Y0;
+var roles=[
+ {id:'iccrom',g:'work',s:2024.08,e:NOW,live:1,yr:'2024',per:'Feb 2024 · now',h:'ICT Specialist',o:'ICCROM',k:'intergovernmental · Rome',
+  p:'Infrastructure and business applications for an international organisation in a hybrid Microsoft 365, Azure and Active Directory environment. Coordinating an ERP cloud migration, a CRM on Dynamics 365, the public website rebuild and licence optimisation, with vendor management and audit readiness.',
+  t:['Azure','Microsoft 365','Dynamics 365','Vendor management','IT governance']},
+ {id:'egpm',g:'work',s:2023.25,e:2024.05,yr:'2023',per:'Apr 2023 · Jan 2024',h:'IT Project Manager',o:'EG Italia',k:'fuel retail',
+  p:'Promoted after delivering several strategic initiatives. Project planning, budget management, risk assessment and resource coordination, plus IT governance, policy design and technology adoption.',
+  t:['PRINCE2','Budget','Risk','IT policy']},
+ {id:'egsa',g:'work',s:2021,e:2023.25,yr:'2021',per:'Jan 2021 · Apr 2023',h:'IT System Administrator',o:'EG Italia',k:'fuel retail',
+  p:'Virtual machines, networks and automation standards across a complex estate. Defined network and VPN standards, designed the COCO Sites network with 70+ devices per site and coordinated the support team on operations and audit controls.',
+  t:['VMware','Hyper-V','VPN','VLAN','FortiGate']},
+ {id:'egsu',g:'work',s:2019.35,e:2021,yr:'2019',per:'May 2019 · Jan 2021',h:'IT Support',o:'EG Italia',k:'fuel retail',
+  p:'Servers, VoIP, printers and Exchange; ran the helpdesk. Supported the ITA Foundation renewal across 1,100 service stations and the nationwide Azure migration, completed without disruption.',
+  t:['Helpdesk','Exchange','Azure migration','Field coordination']},
+ {id:'colg',g:'work',s:2018.6,e:2019.35,yr:'2018',per:'Aug 2018 · May 2019',h:'IT Support, Level 2',o:'Colgate-Palmolive',k:'consumer goods',
+  p:'Level 2 helpdesk: Active Directory and email accounts, IT security maintenance, workstation configuration and device deployment.',
+  t:['Active Directory','Security']},
+ {id:'itis',g:'study',s:2016.7,e:2019.5,yr:'2019',per:'2016 · 2019',h:'Diploma in IT & Telecommunications',o:'I.T.I. Faraday',k:'evening study',
+  p:'Second diploma, earned while working, graduated 84/100.',t:[]},
+ {id:'gtg',g:'work',s:2011.35,e:2019.35,yr:'2011',per:'May 2011 · May 2019',h:'Office Manager, part time',o:'G.T.G. S.r.l.',k:'facility · Da Vinci Center',
+  p:'Building services, IT devices, security and staff operations in a Class A+ business complex in Rome, the link between tenants and facility administration.',t:['Operations','Facilities']},
+ {id:'eng',g:'study',s:2015,e:2017.5,yr:'2017',per:'2015 · 2017',h:'English, B2',o:'Trinity College',k:'language',p:'Certified English, the base for working in international settings.',t:[]},
+ {id:'ipp',g:'study',s:2008,e:2011.5,yr:'2011',per:'2008 · 2011',h:'Diploma in Electrotechnics',o:'I.P. P.P. Pasolini',k:'school',p:'Graduated 92/100. The electrical foundations under everything since.',t:[]}
+];
+var certs=[['ITIL® AI Governance','PeopleCert',2026.7,85,'85%'],['Professional Scrum Master I','Scrum.org',2026.35,95,'95%'],
+ ['PRINCE2® Agile Practitioner & Expert','PeopleCert',2025.7,75,'75%'],['PRINCE2® Agile Foundation','PeopleCert',2025.6,70,'70%'],
+ ['ITIL® 4 Foundation','PeopleCert',2024.6,95,'95%'],['Azure Administrator AZ-104','Microsoft',2023.3,94,'940'],
+ ['PRINCE2® Foundation','Axelos',2023.25,77,'77%'],['MTA Networking Fundamentals','Microsoft',2018.85,91,'91%']];
+function pct(y){return ((y-Y0)/SPAN*100)+'%'}
+
+/* gantt */
+var g=$('#gantt'),tip=$('#tip'),html='<div class="g-head"><span></span><div class="g-years">';
+for(var y=Y0;y<Y1;y++)if(y%2===0||y===2026)html+='<span style="left:'+pct(y+.5)+'">'+y+'</span>';
+html+='</div></div>';
+['work','study'].forEach(function(grp){html+='<div class="g-group">'+grp.toUpperCase()+'</div>';
+  roles.filter(function(r){return r.g===grp}).sort(function(a,b){return b.s-a.s}).forEach(function(r){
+    html+='<div class="g-row"><div class="nm">'+r.h+' <small>· '+r.o+'</small></div><div class="g-track"><div class="g-bar '+(grp==='study'?'study':'')+(r.live?' live':'')+'" data-id="'+r.id+'" style="left:'+pct(r.s)+';width:calc('+((r.e-r.s)/SPAN*100)+'% - 2px)"></div></div></div>'})});
+g.innerHTML=html;
+var nowLine=document.createElement('div');nowLine.className='g-now';g.appendChild(nowLine);
+function placeNow(){var tr=g.querySelector('.g-track');nowLine.style.left=(tr.offsetLeft+tr.offsetWidth*(NOW-Y0)/SPAN)+'px'}
+placeNow();addEventListener('resize',placeNow);
+function showTip(e,h){tip.innerHTML=h;tip.style.opacity=1;var x=Math.min(e.clientX+14,innerWidth-280);tip.style.left=x+'px';tip.style.top=(e.clientY+14)+'px'}
+g.addEventListener('mousemove',function(e){var b=e.target.closest('.g-bar,.g-dia');if(!b){tip.style.opacity=0;return}
+  if(b.dataset.id){var r=roles.find(function(x){return x.id===b.dataset.id});showTip(e,'<b>'+r.h+'</b>'+r.o+'<br><span>'+r.per+'</span>')}
+  else{var c=certs[+b.dataset.c];showTip(e,'<b>'+c[0]+'</b>'+c[1]+' · score '+c[4])}});
+g.addEventListener('mouseleave',function(){tip.style.opacity=0});
+g.addEventListener('click',function(e){var b=e.target.closest('.g-bar');if(!b)return;var t=document.getElementById('ent-'+b.dataset.id);
+  if(t){t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});t.classList.add('in')}});
+
+/* vertical timeline, newest first */
+var tl=$('#tl');
+roles.slice().sort(function(a,b){return b.s-a.s}).forEach(function(r){var d=document.createElement('div');
+  d.className='ent '+r.g;d.id='ent-'+r.id;
+  d.innerHTML='<div class="yr"><b>'+r.yr+'</b>'+r.per.replace(/^\w+ \d{4} · /,'to ').replace(/^\d{4} · /,'to ')+'</div>'+
+    '<div class="org">'+r.o+' <span class="k">· '+r.k+'</span>'+(r.live?'<span class="live">● current</span>':'')+'</div>'+
+    '<h3>'+r.h+'</h3><p>'+r.p+'</p>'+(r.t.length?'<div class="tags">'+r.t.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>':'');
+  tl.appendChild(d)});
+var ents=tl.querySelectorAll('.ent'),fill=$('#tlFill');
+function fillTimeline(){var r=tl.getBoundingClientRect(),mid=innerHeight*.6,h=r.height-12;
+  var v=Math.max(0,Math.min(h,mid-r.top));fill.style.height=v+'px';
+  ents.forEach(function(e){var er=e.getBoundingClientRect();e.classList.toggle('lit',er.top+12<mid);if(er.top<innerHeight*.92)e.classList.add('in')})}
+fillTimeline();
+
+/* certs */
+var cg=$('#certGrid');
+certs.forEach(function(c){var d=document.createElement('div');d.className='cert reveal';
+  d.innerHTML='<div class="ring"><svg width="72" height="72"><circle class="bgc" cx="36" cy="36" r="32"/><circle class="fg" cx="36" cy="36" r="32" data-v="'+c[3]+'"/></svg><b>'+c[4]+'</b></div><h3>'+c[0]+'</h3><p>'+c[1]+' · '+Math.floor(c[2])+'</p>';cg.appendChild(d)});
+
+/* skills */
+var skills=[['PRINCE2 & PRINCE2 Agile','pm'],['Scrum','pm'],['ITIL 4 service management','pm'],['Risk, issue & change control','pm'],['Stakeholder reporting','pm'],
+ ['Microsoft Azure','cloud'],['Microsoft 365 governance','cloud'],['Entra ID & Intune','cloud'],['Conditional access & DLP','cloud'],['Windows Server, Hyper-V, VMware','cloud'],['Active Directory, DNS, DHCP, GPO','cloud'],['FortiGate & SonicWall','cloud'],['LAN/WAN, VLAN, VPN, QoS','cloud'],
+ ['Claude','auto'],['ChatGPT','auto'],['Microsoft Copilot','auto'],['Prompt design','auto'],['AI-assisted automation','auto'],['AI governance','auto'],['Power Automate','auto'],['Power Apps','auto'],['Power BI','auto'],['Dynamics 365','auto'],['AI Builder','auto'],
+ ['Team leadership','lead'],['Vendor & SLA management','lead'],['IT budget & ROI','lead'],['IT policy & procedures','lead']];
+var lab={pm:'pm',cloud:'infra',auto:'auto',lead:'lead'},ch=$('#chips');
+skills.forEach(function(s){var c=document.createElement('span');c.className='chip';c.dataset.f=s[1];c.innerHTML=s[0]+'<i>'+lab[s[1]]+'</i>';ch.appendChild(c)});
+document.querySelectorAll('#filters button').forEach(function(b){b.onclick=function(){
+  document.querySelectorAll('#filters button').forEach(function(x){x.classList.toggle('on',x===b)});
+  ch.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('off',b.dataset.f!=='all'&&c.dataset.f!==b.dataset.f)})}});
+
+/* counters + reveal */
+function count(el){if(el.dataset.done)return;el.dataset.done=1;var tgt=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',sep=el.dataset.sep;
+  function fmt(v){return pre+(sep?v.toLocaleString('en-US'):v)+suf}
+  if(reduce){el.textContent=fmt(tgt);return}
+  var t0=performance.now();(function f(ts){var k=Math.min(1,(ts-t0)/1500);k=1-Math.pow(1-k,3);el.textContent=fmt(Math.round(tgt*k));if(k<1)requestAnimationFrame(f)})(t0)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add('in');
+  t.querySelectorAll('[data-count]').forEach(count);if(t.dataset.count)count(t);
+  t.querySelectorAll('.fg').forEach(function(c){c.style.strokeDashoffset=201-201*c.dataset.v/100});
+  if(t.classList.contains('gantt-wrap'))g.classList.add('in');io.unobserve(t)})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
+
+/* nav spy */
+var nl=document.querySelectorAll('#links a');
+var ns=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)nl.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('section[id]').forEach(function(s){ns.observe(s)});
+})();
+</script>
+</body>
+</html>
